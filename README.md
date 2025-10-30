@@ -9,6 +9,10 @@ Template for my Express JS projects
 connectionString: "postgresql://<role_name>:<role_password>@localhost:5432/<database>"
 example: DATABASE_URL="postgresql://chofor:chofor@localhost:5432/game_shop"
 
+# Also for the .env file add
+
+NODE_ENV="dev"
+
 # Don't forget this is a template;
 
 Meaning you will have to make some editing for you
