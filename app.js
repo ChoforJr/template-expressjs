@@ -24,14 +24,6 @@ const PgSessionStore = createSessionStore(session);
 const sessionStore = new PgSessionStore({
   pool: Pool,
   tableName: "session", // Default table name is 'session'
-  // Recommended for development, but consider running table.sql manually for production
-  createTableIfMissing: () => {
-    if (process.env.NODE_ENV === "dev") {
-      return false;
-    } else if (process.env.NODE_ENV === "prod") {
-      return true;
-    }
-  },
 });
 
 // 2. Configure Express Session Middleware
@@ -44,14 +36,6 @@ app.use(
     saveUninitialized: false, // Recommended: Don't create a session until something is stored
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
-      secure: () => {
-        // Set to true if you are using HTTPS
-        if (process.env.NODE_ENV === "dev") {
-          return false;
-        } else if (process.env.NODE_ENV === "prod") {
-          return true;
-        }
-      },
     },
   })
 );
